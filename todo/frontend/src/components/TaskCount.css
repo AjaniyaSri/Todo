@@ -1,0 +1,10 @@
+.task-count {
+  font-size: 0.875rem;
+  color: white !important;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.app.dark .task-count {
+  color: white !important;
+}

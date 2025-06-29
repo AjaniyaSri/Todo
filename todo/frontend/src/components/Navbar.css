@@ -1,0 +1,144 @@
+.navbar {
+  background-color: #ffffff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  
+}
+
+.app.dark .navbar {
+  background-color: #2d2d2d;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.navbar-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-brand {
+  display: flex;
+  align-items: center;
+}
+
+.brand-link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: var(--primary-color);
+  font-weight: 600;
+  font-size: 1.25rem;
+  transition: opacity var(--transition-speed);
+}
+
+.brand-link:hover {
+  opacity: 0.8;
+}
+
+.brand-icon {
+  font-size: 1.5rem;
+  margin-right: 0.5rem;
+}
+
+.nav-links {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: var(--secondary-color);
+  font-weight: 500;
+  font-size: 0.875rem;
+  padding: 0.5rem 1rem;
+  border-radius: var(--border-radius);
+  transition: all var(--transition-speed);
+}
+.nav-link h2{
+  color: black;
+}
+
+.nav-link:hover {
+  color: var(--primary-color);
+  background-color: rgba(74, 144, 226, 0.1);
+}
+
+.app.dark .nav-link:hover {
+  background-color: rgba(74, 144, 226, 0.2);
+}
+
+.add-task-link {
+  display: flex;
+  color: black;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: var(--primary-color);
+  color: white !important;
+  box-shadow: 0 2px 4px rgba(74, 144, 226, 0.2);
+}
+
+.add-task-link:hover {
+  background-color: #357abd !important;
+  color: white !important;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(74, 144, 226, 0.3);
+}
+
+.add-icon {
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+}
+
+.theme-toggle {
+  background: none;
+  border: none;
+  font-size: 1.25rem;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 50%;
+  transition: all var(--transition-speed);
+  color: var(--secondary-color);
+}
+
+.theme-toggle:hover {
+  background-color: rgba(74, 144, 226, 0.1);
+  color: var(--primary-color);
+  transform: scale(1.1);
+}
+
+.app.dark .theme-toggle:hover {
+  background-color: rgba(74, 144, 226, 0.2);
+}
+
+@media (max-width: 768px) {
+  .navbar-container {
+    padding: 1rem;
+  }
+
+  .brand-text {
+    display: none;
+  }
+
+  .nav-links {
+    gap: 1rem;
+  }
+
+  .nav-link {
+    padding: 0.5rem;
+  }
+
+  .add-task-link span:not(.add-icon) {
+    display: none;
+  }
+}
