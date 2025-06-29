@@ -1,9 +1,12 @@
 .search-tasks {
-  background-color: #ffffff;
-  border-radius: var(--border-radius);
-  padding: 1.5rem;
+  background: #f8fafd;
+  border-radius: 16px;
+  padding: 1.5rem 2rem;
   margin-bottom: 2rem;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
   transition: all var(--transition-speed);
 }
 

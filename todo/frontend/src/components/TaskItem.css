@@ -218,26 +218,26 @@
   position: fixed;
   top: 0;
   left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.5);
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0,0,0,0.45);
   display: flex;
   align-items: center;
   justify-content: center;
   z-index: 1000;
-  padding: 1rem;
+  animation: fadeIn 0.2s;
 }
 
 .task-details-content {
-  background: white;
-  border-radius: 12px;
-  padding: 2rem;
-  max-width: 500px;
-  width: 100%;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+  padding: 2rem 2.5rem;
+  max-width: 420px;
   max-height: 80vh;
   overflow-y: auto;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
   position: relative;
+  animation: fadeIn 0.2s;
 }
 
 .task-details-content h3 {
@@ -659,4 +659,40 @@
   font-size: 0.8em;
   color: #666;
   margin-left: 5px;
+}
+
+.task-details-modal .close-button {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: #f8fafd;
+  border: none;
+  border-radius: 50%;
+  width: 2.5rem;
+  height: 2.5rem;
+  font-size: 1.3rem;
+  color: #333;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  transition: background 0.2s, color 0.2s;
+}
+
+.task-details-modal .close-button:hover {
+  background: #e0e0e0;
+  color: #dc3545;
+}
+
+body.modal-open {
+  overflow: hidden;
+}
+
+@media (max-width: 600px) {
+  .task-details-content {
+    max-width: 95vw;
+    padding: 1rem;
+  }
 }

@@ -20,6 +20,7 @@ function SearchTasks({ search, setSearch, sort, setSort }) {
         <option value="default">Sort: Default</option>
         <option value="dueDate">Sort: Due Date</option>
         <option value="alphabetical">Sort: Alphabetical</option>
+        <option value="category">Sort: Category</option>
       </select>
     </div>
   );
