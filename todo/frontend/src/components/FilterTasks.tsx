@@ -1,6 +1,12 @@
 import './FilterTasks.css';
 
-function FilterTasks({ setFilter, currentFilter, tasks }) {
+interface FilterTasksProps {
+  setFilter: (filter: string) => void;
+  currentFilter: string;
+  tasks: any[];
+}
+
+function FilterTasks({ setFilter, currentFilter, tasks }: FilterTasksProps) {
   const filters = ['All', 'Active', 'Completed', 'Overdue', 'Due Today', 'Upcoming'];
   const categories = ['None', 'Work', 'Personal', 'Shopping'].map((cat) => `Category:${cat}`);
 
@@ -20,4 +26,4 @@ function FilterTasks({ setFilter, currentFilter, tasks }) {
   );
 }
 
-export default FilterTasks;
+export default FilterTasks; 

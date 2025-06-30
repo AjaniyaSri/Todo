@@ -1,6 +1,15 @@
 import './TaskCount.css';
 
-function TaskCount({ tasks }) {
+interface Task {
+  completed: boolean;
+  [key: string]: any;
+}
+
+interface TaskCountProps {
+  tasks: Task[];
+}
+
+function TaskCount({ tasks }: TaskCountProps) {
   const total = tasks.length;
   const active = tasks.filter((task) => !task.completed).length;
   const completed = tasks.filter((task) => task.completed).length;
@@ -12,4 +21,4 @@ function TaskCount({ tasks }) {
   );
 }
 
-export default TaskCount;
+export default TaskCount; 

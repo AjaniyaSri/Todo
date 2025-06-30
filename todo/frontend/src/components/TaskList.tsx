@@ -1,7 +1,16 @@
 import TaskItem from './TaskItem';
 import './TaskList.css';
 
-function TaskList({ tasks, deleteTask, toggleComplete, editTask }) {
+import type { Task } from '../context/TaskContext';
+
+interface TaskListProps {
+  tasks: Task[];
+  deleteTask: (id: string | number) => Promise<void>;
+  toggleComplete: (id: string | number) => Promise<void>;
+  editTask: (id: string | number, text: string, dueDate: string, category: string) => Promise<void>;
+}
+
+function TaskList({ tasks, deleteTask, toggleComplete, editTask }: TaskListProps) {
   // Remove duplicate tasks based on _id
   const uniqueTasks = tasks.filter((task, index, self) => 
     index === self.findIndex(t => t._id === task._id)
@@ -22,4 +31,4 @@ function TaskList({ tasks, deleteTask, toggleComplete, editTask }) {
   );
 }
 
-export default TaskList;
+export default TaskList; 

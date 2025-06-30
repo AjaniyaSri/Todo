@@ -89,56 +89,137 @@ function TaskItem({ task, deleteTask, toggleComplete, editTask, isModal = false,
   };
 
   if (isModal && onClose) {
-    // Render only the modal for popup
     return (
       <div className="task-details-modal" onClick={onClose}>
         <div className="task-details-content" onClick={e => e.stopPropagation()}>
           <button className="close-button" onClick={onClose}>&times;</button>
           <h3>Task Details</h3>
-          <div className="detail-section">
-            <label>Task:</label>
-            <p className="detail-text">{task.text}</p>
-          </div>
-          {task.description && (
-            <div className="detail-section">
-              <label>Description:</label>
-              <p className="detail-text">{task.description}</p>
-            </div>
+          {isEditing ? (
+            <form
+              className="task-edit-form"
+              onSubmit={e => {
+                e.preventDefault();
+                handleSave();
+              }}
+            >
+              <input
+                className="edit-input"
+                type="text"
+                value={editText}
+                onChange={e => setEditText(e.target.value)}
+                required
+              />
+              <input
+                className="edit-date"
+                type="date"
+                value={editDueDate}
+                onChange={e => setEditDueDate(e.target.value)}
+              />
+              <select
+                className="edit-category"
+                value={editCategory}
+                onChange={e => setEditCategory(e.target.value)}
+              >
+                <option value="None">No Category</option>
+                <option value="Work">Work</option>
+                <option value="Personal">Personal</option>
+                <option value="Shopping">Shopping</option>
+              </select>
+              <div className="edit-buttons">
+                <button type="submit" className="save-button">Save</button>
+                <button type="button" className="cancel-button" onClick={handleCancel}>Cancel</button>
+              </div>
+            </form>
+          ) : (
+            <>
+              <div className="detail-section">
+                <label>Task:</label>
+                <p className="detail-text">{task.text}</p>
+              </div>
+              {task.description && (
+                <div className="detail-section">
+                  <label>Description:</label>
+                  <p className="detail-text">{task.description}</p>
+                </div>
+              )}
+              <div className="detail-section">
+                <label>Status:</label>
+                <span className={`status-badge ${task.completed ? 'completed' : 'active'}`}>{task.completed ? 'Completed' : 'Active'}</span>
+              </div>
+              <div className="detail-section">
+                <label>Priority:</label>
+                <span className="priority-badge" style={{ backgroundColor: getPriorityColor(task.priority) }}>{getPriorityText(task.priority)}</span>
+              </div>
+              <div className="detail-section">
+                <label>Category:</label>
+                <span className="category-badge">{task.category || 'None'}</span>
+              </div>
+              <div className="detail-section">
+                <label>Due Date:</label>
+                <span className="due-date-badge">{formatDate(task.dueDate)}</span>
+              </div>
+              {task.createdAt && (
+                <div className="detail-section">
+                  <label>Created:</label>
+                  <span className="date-badge">{formatDate(task.createdAt)}</span>
+                </div>
+              )}
+              {task.updatedAt && task.updatedAt !== task.createdAt && (
+                <div className="detail-section">
+                  <label>Last Updated:</label>
+                  <span className="date-badge">{formatDate(task.updatedAt)}</span>
+                </div>
+              )}
+              <div className="detail-actions">
+                <button onClick={handleEdit} className="edit-button">Edit Task</button>
+                <button onClick={handleDelete} className="delete-button">Delete Task</button>
+                <button onClick={onClose} className="close-button">Close</button>
+              </div>
+            </>
           )}
-          <div className="detail-section">
-            <label>Status:</label>
-            <span className={`status-badge ${task.completed ? 'completed' : 'active'}`}>{task.completed ? 'Completed' : 'Active'}</span>
-          </div>
-          <div className="detail-section">
-            <label>Priority:</label>
-            <span className="priority-badge" style={{ backgroundColor: getPriorityColor(task.priority) }}>{getPriorityText(task.priority)}</span>
-          </div>
-          <div className="detail-section">
-            <label>Category:</label>
-            <span className="category-badge">{task.category || 'None'}</span>
-          </div>
-          <div className="detail-section">
-            <label>Due Date:</label>
-            <span className="due-date-badge">{formatDate(task.dueDate)}</span>
-          </div>
-          {task.createdAt && (
-            <div className="detail-section">
-              <label>Created:</label>
-              <span className="date-badge">{formatDate(task.createdAt)}</span>
-            </div>
-          )}
-          {task.updatedAt && task.updatedAt !== task.createdAt && (
-            <div className="detail-section">
-              <label>Last Updated:</label>
-              <span className="date-badge">{formatDate(task.updatedAt)}</span>
-            </div>
-          )}
-          <div className="detail-actions">
-            <button onClick={handleEdit} className="edit-button">Edit Task</button>
-            <button onClick={handleDelete} className="delete-button">Delete Task</button>
-            <button onClick={onClose} className="close-button">Close</button>
-          </div>
         </div>
+      </div>
+    );
+  }
+
+  if (!isModal && isEditing) {
+    return (
+      <div className="task-item editing">
+        <form
+          className="task-edit-form"
+          onSubmit={e => {
+            e.preventDefault();
+            handleSave();
+          }}
+        >
+          <input
+            className="edit-input"
+            type="text"
+            value={editText}
+            onChange={e => setEditText(e.target.value)}
+            required
+          />
+          <input
+            className="edit-date"
+            type="date"
+            value={editDueDate}
+            onChange={e => setEditDueDate(e.target.value)}
+          />
+          <select
+            className="edit-category"
+            value={editCategory}
+            onChange={e => setEditCategory(e.target.value)}
+          >
+            <option value="None">No Category</option>
+            <option value="Work">Work</option>
+            <option value="Personal">Personal</option>
+            <option value="Shopping">Shopping</option>
+          </select>
+          <div className="edit-buttons">
+            <button type="submit" className="save-button">Save</button>
+            <button type="button" className="cancel-button" onClick={handleCancel}>Cancel</button>
+          </div>
+        </form>
       </div>
     );
   }

@@ -1,10 +1,14 @@
 import { useState } from 'react';
 import './AddTask.css';
 
-function AddTask({ addTask }) {
-  const [text, setText] = useState('');
-  const [dueDate, setDueDate] = useState('');
-  const [category, setCategory] = useState('None');
+interface AddTaskProps {
+  addTask: (text: string, dueDate: string, category: string) => void;
+}
+
+function AddTask({ addTask }: AddTaskProps) {
+  const [text, setText] = useState<string>('');
+  const [dueDate, setDueDate] = useState<string>('');
+  const [category, setCategory] = useState<string>('None');
 
   const handleSubmit = () => {
     addTask(text, dueDate, category);
@@ -52,4 +56,4 @@ function AddTask({ addTask }) {
   );
 }
 
-export default AddTask;
+export default AddTask; 

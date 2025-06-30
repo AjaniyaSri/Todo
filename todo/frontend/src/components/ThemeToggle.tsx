@@ -1,6 +1,11 @@
 import './ThemeToggle.css';
 
-function ThemeToggle({ theme, setTheme }) {
+interface ThemeToggleProps {
+  theme: string;
+  setTheme: (theme: string) => void;
+}
+
+function ThemeToggle({ theme, setTheme }: ThemeToggleProps) {
   return (
     <button
       onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}
@@ -12,4 +17,4 @@ function ThemeToggle({ theme, setTheme }) {
   );
 }
 
-export default ThemeToggle;
+export default ThemeToggle; 

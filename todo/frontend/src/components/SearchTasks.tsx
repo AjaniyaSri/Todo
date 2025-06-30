@@ -1,6 +1,13 @@
 import './SearchTasks.css';
 
-function SearchTasks({ search, setSearch, sort, setSort }) {
+interface SearchTasksProps {
+  search: string;
+  setSearch: (search: string) => void;
+  sort: string;
+  setSort: (sort: string) => void;
+}
+
+function SearchTasks({ search, setSearch, sort, setSort }: SearchTasksProps) {
   return (
     <div className="search-tasks">
       <input
@@ -26,4 +33,4 @@ function SearchTasks({ search, setSearch, sort, setSort }) {
   );
 }
 
-export default SearchTasks;
+export default SearchTasks; 
