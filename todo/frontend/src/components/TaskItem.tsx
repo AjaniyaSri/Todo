@@ -124,6 +124,8 @@ function TaskItem({ task, deleteTask, toggleComplete, editTask, isModal = false,
                 <option value="Work">Work</option>
                 <option value="Personal">Personal</option>
                 <option value="Shopping">Shopping</option>
+                <option value="Health">Health</option>
+                <option value="Education">Education</option>
               </select>
               <div className="edit-buttons">
                 <button type="submit" className="save-button">Save</button>
